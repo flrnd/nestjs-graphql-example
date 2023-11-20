@@ -2,6 +2,8 @@
 
 NestJS GraphQL API example with unit and e2e tests.
 
+I use `pnpm` as my node manager, you can use whatever you like, simply remove the pnpm-lock.yaml file and use `npm|yarn` or whatever you like instead.
+
 ## Scripts
 
 The following scripts are here to help you get up and running in a development environment as quickly as possible.
