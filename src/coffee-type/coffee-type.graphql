@@ -1,0 +1,18 @@
+type CoffeeType {
+  id: String!
+  name: String!
+}
+
+input CoffeeTypeInput {
+  name: String!
+}
+
+type Query {
+  coffeeType(coffeeTypeId: String): [CoffeeType]!
+}
+
+type Mutation {
+  createCoffeeType(input: CoffeeTypeInput!): CoffeeType!
+  updateCoffeeType(id: String!, input: CoffeeTypeInput!): CoffeeType!
+  deleteCoffeeType(id: String!): CoffeeType!
+}
