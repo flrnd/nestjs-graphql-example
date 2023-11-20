@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Coffee {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String     @unique
+  description  String
+  price        Float
+  imageUrl     String
+  coffeeTypeId String     @db.Uuid
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  coffeeType   CoffeeType @relation(fields: [coffeeTypeId], references: [id])
+}
+
+model CoffeeType {
+  id      String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name    String   @unique
+  coffees Coffee[]
+}
