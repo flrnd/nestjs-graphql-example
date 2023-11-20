@@ -1,0 +1,38 @@
+type Coffee {
+  id: String!
+  name: String!
+  description: String!
+  price: Float!
+  imageUrl: String!
+  coffeeType: CoffeeType!
+}
+
+type CreateCoffeeOutput {
+  id: String!
+  name: String!
+  description: String!
+  price: Float!
+  imageUrl: String!
+  coffeeTypeId: String!
+}
+
+input CreateCoffeeInput {
+  name: String!
+  description: String!
+  price: Float!
+  imageUrl: String!
+  coffeeTypeId: String!
+}
+
+type Query {
+  coffees(coffeeTypeId: String): [Coffee]!
+}
+
+type Mutation {
+  createCoffee(createCoffeeInput: CreateCoffeeInput!): CreateCoffeeOutput!
+  updateCoffee(
+    id: String!
+    createCoffeeInput: CreateCoffeeInput!
+  ): CreateCoffeeOutput!
+  deleteCoffee(id: String!): Coffee!
+}
